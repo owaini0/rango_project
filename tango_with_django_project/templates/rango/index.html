@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html>
-
-  <head>
-    <title>Rango</title>
-  </head>
-
-  <body>
-    <h1>Rango says...</h1>
-    <div>
-      Rango says hey there partner!
-      <br />
-      <strong>{{ boldmessage }}</strong><br />
-    </div>
-    <div>
-        <a href="/rango/about/">About</a><br />
-        <img src="{% static 'images/rango.jpg' %}" 
-            alt="Picture of Rango" />
-    </div>
-  </body>
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rango</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>
+            Rango Says...
+        </h1>
+        <div>
+             Hey there partner!
+            <strong>{{ boldmessage }}</strong><br/>
+        </div>
+        <div>
+            {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li>
+                    {{category.name}}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <strong>
+                There are no categories present.
+            </strong>
+            {% endif %}
+        </div>
+        <div>
+            <a href="/rango/about/">About</a><br />
+            <img src="{% static 'images/rango.png' %}"
+            alt="Picture of Rango" draggable="false" />
+        </div>
+    </body>
 </html>
